@@ -1,0 +1,86 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Cadastro de Pacientes</title>
+	</h:head> 
+	<h:body>
+
+	<div id="div_01">
+		<h:form id="formulario-1">
+		
+			<p:panel id="painel-1" header="Cadastrar Pacientes">
+				<p:messages id="mensagens-1"></p:messages>
+				<p:panelGrid columns="2" id="painel-grid-1">
+					<p:outputLabel value="Nome" />
+					<p:inputText id="nome" title="Digite seu nome!" value="#{pacienteBean.paciente.nome}" size="50" required="true" requiredMessage="Falta seu nome!" />
+					<p:outputLabel value="CPF" />
+					<p:inputText id="cpf" size="50" title="Digite seu CPF aqui! Para atualizar use antigo-cpf/novo-cpf, ex: 111/222 -> novo = 222." value="#{pacienteBean.paciente.cpf}" required="true" requiredMessage="Falta o CPF!" />
+					<p:outputLabel value="E-mail" />
+					<p:inputText id="email" size="50" title="Digite seu e-mail aqui!" value="#{pacienteBean.paciente.email}" required="true" requiredMessage="Falta o E-mail!" />
+					<p:outputLabel value="Médico" />
+					<p:inputText id="medico" size="50" title="Digite o nome do Médico!" value="#{pacienteBean.paciente.medico}" required="true" requiredMessage="Falta o nome do médico!" />
+				</p:panelGrid>
+			</p:panel>
+			<p:commandButton value="Cadastrar" icon="ui-icon-plus" action="#{pacienteBean.criarPaciente()}" update="formulario-1 tabela"/>
+	
+		</h:form>
+		
+		<br />
+		<br />
+		
+		<p:dataTable id="tabela" value="#{pacienteBean.listarPacientes()}" var="_paciente">
+			<p:column headerText="Nº">
+				<p:outputLabel value="#{_paciente.id}" />
+			</p:column>
+			<p:column headerText="Nome">
+				<p:outputLabel value="#{_paciente.nome}" />
+			</p:column>
+			<p:column headerText="CPF">
+				<p:outputLabel value="#{_paciente.cpf}" />
+			</p:column>
+			<p:column headerText="E-mail">
+				<p:outputLabel value="#{_paciente.email}" />
+			</p:column>
+			<p:column headerText="Médico">
+				<p:outputLabel value="#{_paciente.medico}" />
+			</p:column>
+			
+			<p:column headerText="Atualizar">
+				<p:commandButton value="Atualizar" type="button" onclick="PF('dlg3').show();" />
+				<p:dialog header="Atualizar" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="300">
+					<h:form id="formulario-3">
+					
+						<p:panel id="painel-3" header="Cadastrar Pacientes">
+							<p:messages id="mensagens-1"></p:messages>
+							<p:panelGrid columns="2" id="painel-grid-3">
+								<p:outputLabel value="Nome" />
+								<p:inputText id="nome_" size="50" title="Digite seu nome!" value="#{pacienteBean.paciente.novoNome}" required="true" requiredMessage="Falta seu nome!" />
+								<p:outputLabel value="CPF" />
+								<p:inputText id="cpf_" size="50" title="Digite seu CPF aqui! Para atualizar use antigo-cpf/novo-cpf, ex: 111/222 -> novo = 222." value="#{pacienteBean.paciente.novoCPf}" required="true" requiredMessage="Falta o CPF!" />
+								<p:outputLabel value="E-mail" />
+								<p:inputText id="email_" size="50" title="Digite seu e-mail aqui!" value="#{pacienteBean.paciente.novoEmail}" required="true" requiredMessage="Falta o E-mail!" />
+								<p:outputLabel value="Médico" />
+								<p:inputText id="medico_" size="50" title="Digite o nome do Médico!" value="#{pacienteBean.paciente.novoMedico}" required="true" requiredMessage="Falta o nome do médico!" />
+							</p:panelGrid>
+						</p:panel>
+						<p:commandButton value="Atualizar" icon="ui-icon-pencil" action="#{pacienteBean.atualizarPaciente(_paciente.id)}" update="formulario-3 tabela"/>
+				
+					</h:form>
+				</p:dialog>
+			</p:column>
+			
+			<p:column headerText="Deletar">
+				<p:commandButton value="Deletar" icon="ui-icon-minus" action="#{pacienteBean.deletarPaciente(_paciente.id)}" update="tabela"/>
+			</p:column>
+		</p:dataTable>
+		
+		<br />
+	</div>
+	
+</h:body> 
+</html>
