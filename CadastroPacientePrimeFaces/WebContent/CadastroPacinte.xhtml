@@ -19,7 +19,7 @@
 					<p:outputLabel value="Nome" />
 					<p:inputText id="nome" title="Digite seu nome!" value="#{pacienteBean.paciente.nome}" size="50" required="true" requiredMessage="Falta seu nome!" />
 					<p:outputLabel value="CPF" />
-					<p:inputText id="cpf" size="50" title="Digite seu CPF aqui! Para atualizar use antigo-cpf/novo-cpf, ex: 111/222 -> novo = 222." value="#{pacienteBean.paciente.cpf}" required="true" requiredMessage="Falta o CPF!" />
+					<p:inputText id="cpf" size="50" title="Digite seu CPF aqui!" value="#{pacienteBean.paciente.cpf}" required="true" requiredMessage="Falta o CPF!" />
 					<p:outputLabel value="E-mail" />
 					<p:inputText id="email" size="50" title="Digite seu e-mail aqui!" value="#{pacienteBean.paciente.email}" required="true" requiredMessage="Falta o E-mail!" />
 					<p:outputLabel value="Médico" />
@@ -51,17 +51,17 @@
 			</p:column>
 			
 			<p:column headerText="Atualizar">
-				<p:commandButton value="Atualizar" type="button" onclick="PF('dlg3').show();" />
-				<p:dialog header="Atualizar" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="300">
+				<p:commandButton value="Atualizar" type="button" onclick="PF('dialogo').show();" />
+				<p:dialog header="Atualizar dados do Paciente" widgetVar="dialogo" showEffect="explode" hideEffect="bounce" height="300">
 					<h:form id="formulario-3">
 					
 						<p:panel id="painel-3" header="Cadastrar Pacientes">
-							<p:messages id="mensagens-1"></p:messages>
+							<p:messages id="mensagens-2"></p:messages>
 							<p:panelGrid columns="2" id="painel-grid-3">
 								<p:outputLabel value="Nome" />
 								<p:inputText id="nome_" size="50" title="Digite seu nome!" value="#{pacienteBean.paciente.novoNome}" required="true" requiredMessage="Falta seu nome!" />
 								<p:outputLabel value="CPF" />
-								<p:inputText id="cpf_" size="50" title="Digite seu CPF aqui! Para atualizar use antigo-cpf/novo-cpf, ex: 111/222 -> novo = 222." value="#{pacienteBean.paciente.novoCPf}" required="true" requiredMessage="Falta o CPF!" />
+								<p:inputText id="cpf_" size="50" title="Digite seu CPF aqui!" value="#{pacienteBean.paciente.novoCPf}" required="true" requiredMessage="Falta o CPF!" />
 								<p:outputLabel value="E-mail" />
 								<p:inputText id="email_" size="50" title="Digite seu e-mail aqui!" value="#{pacienteBean.paciente.novoEmail}" required="true" requiredMessage="Falta o E-mail!" />
 								<p:outputLabel value="Médico" />

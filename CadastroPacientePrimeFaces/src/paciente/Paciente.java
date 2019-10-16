@@ -109,6 +109,5 @@ public class Paciente {
 	public void setNovoMedico(String novoMedico) {
 		this.novoMedico = novoMedico;
 	}
-	
 
 }

@@ -28,7 +28,7 @@ public class PacienteBean {
 	}
 	
 	public void atualizarPaciente(Long id) { // Update
-		Paciente p = new Paciente(id, paciente.getNome(), paciente.getNovoCPf(), paciente.getNovoEmail(), paciente.getNovoMedico());
+		Paciente p = new Paciente(id, paciente.getNovoNome(), paciente.getNovoCPf(), paciente.getNovoEmail(), paciente.getNovoMedico());
 		List<Paciente> pac_s = this.pacientes_clone;
 		for (int i = 0; i < pac_s.size(); i++) {
 			if ( pac_s.get(i).getId().equals(id) ) {
